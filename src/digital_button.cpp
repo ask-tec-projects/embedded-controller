@@ -1,11 +1,12 @@
 #include <Arduino.h>
 #include <digital_button.h>
 
-DigitalButton::DigitalButton(byte pin) : pin(pin) {
-  state = false;
+DigitalButton::DigitalButton(byte pin) {
+  this->pin = pin;
+  this->state = false;
   pinMode(pin, INPUT);
 }
 
-bool DigitalButton::is_pressed() { return state; }
+bool DigitalButton::is_pressed() { return this->state; }
 
-void DigitalButton::tick() { state = digitalRead(pin) == HIGH; }
+void DigitalButton::tick() { this->state = digitalRead(this->pin) == HIGH; }
