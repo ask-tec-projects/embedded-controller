@@ -2,7 +2,9 @@
 #define PARSE_H
 
 #include <Ethernet.h>
+#include <WString.h>
 
-char *parse_http_request_path(EthernetClient client);
+String parse_http_request(EthernetClient client);
+String parse_http_request_path(String request);
 
-#endif PARSE_H
+#endif

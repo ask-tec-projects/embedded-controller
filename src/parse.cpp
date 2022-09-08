@@ -1,25 +1,25 @@
 #include <Ethernet.h>
+#include <WString.h>
 #include <parse.h>
 
-char *parse_http_request_path(EthernetClient client) {
-  while (client.read() != '/') {
-  }
-
-  char *buffer;
-  size_t buffer_size = 1;
-  buffer[0] = '/';
-  buffer[1] = '\0';
-
-  while (true) {
+String parse_http_request(EthernetClient client) {
+  String request = String();
+  while (client.available()) {
     char c = client.read();
-    Serial.print(c);
-    if (c == ' ') {
-      break;
-    }
-    buffer[buffer_size] = c;
-    buffer[buffer_size + 1] = '\0';
-    buffer_size++;
+    request += c;
   }
+  return request;
+}
 
-  return buffer;
+String parse_http_request_path(String request) {
+  String path = String();
+  signed short i = 0;
+  while (request[i] != '/') {
+    i++;
+  }
+  while (request[i] != ' ') {
+    path += request[i];
+    i++;
+  }
+  return path;
 }

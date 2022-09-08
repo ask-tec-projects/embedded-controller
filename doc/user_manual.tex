@@ -1,0 +1,28 @@
+%! TeX program = lualatex
+\documentclass[12pt,twoside]{report}
+
+\usepackage[a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm,headheight=15pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{titlesec}
+\usepackage{graphicx}
+
+\title{%
+  Metronome \\
+\large User Manual \\}
+\author{Andreas Krühlmann}
+
+\pagenumbering{arabic}
+\setlist{nosep}
+\titleformat{\chapter}{\centering}{\LARGE\bf\thechapter}{1em}{\LARGE\bf}{}
+
+\begin{document}
+    \maketitle
+    \newpage
+    \tableofcontents
+    \newpage
+    \input{user_manual.includes/introduction.tex}
+    \input{user_manual.includes/architecture.tex}
+\end{document}

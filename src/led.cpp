@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <led.h>
 
-Led::Led(byte pin) {
+Led::Led(unsigned char pin) {
   this->state = false;
   this->pin = pin;
   pinMode(pin, OUTPUT);
@@ -23,5 +23,10 @@ void Led::turn_on() {
 
 void Led::turn_off() {
   this->state = false;
+  write();
+}
+
+void Led::set(bool state) {
+  this->state = state;
   write();
 }

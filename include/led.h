@@ -3,16 +3,17 @@
 
 class Led {
 protected:
-  byte pin;
+  unsigned char pin;
   bool state;
   void write();
 
 public:
-  Led(byte pin);
+  Led(unsigned char pin);
   bool is_on();
   void toggle();
   void turn_on();
   void turn_off();
+  void set(bool state);
 };
 
 #endif

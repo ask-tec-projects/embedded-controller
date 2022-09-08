@@ -3,11 +3,11 @@
 
 class DigitalButton {
 protected:
-  byte pin;
+  unsigned char pin;
   bool state;
 
 public:
-  DigitalButton(byte pin);
+  DigitalButton(unsigned char pin);
   bool is_pressed();
   void tick();
 };
