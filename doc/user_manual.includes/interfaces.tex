@@ -1,0 +1,44 @@
+\chapter{Interfaces}
+
+\section{REST API}
+
+The Metronome application provides a RESTful HTTP API for accessing the current frequency. The application is pre-configured to serve this service on IP address 192.168.1.1.
+
+The returned frequency represents the number of on/off cycles the led will perform every second.
+
+It can then be accessed with an HTTP client; this example makes use of cURL:
+
+\begin{verbatim}
+    $ curl -X GET -H 'Accept: application/json' http://192.168.1.1/frequency
+    {"frequency":8}
+\end{verbatim}
+
+Accessing any other resource will result in an HTTP 404 error:
+
+\begin{verbatim}
+    $ curl -X GET -H 'Accept: application/json' http://192.168.1.1/
+    Not Found
+\end{verbatim}
+
+
+\subsection{Configuring client connectivity}
+
+In order for a client to connect to the application an ethernet cord must be connected between the application hardware and the client hardware. An example to configure a valid IP address for the client on a modern distribution of GNU/Linux is shown below:
+
+\begin{verbatim}
+    $ sudo ifconfig <device_name> 192.168.1.2
+\end{verbatim}
+
+Available devices can be accessed with:
+
+\begin{verbatim}
+    $ ip -brief a
+\end{verbatim}
+
+\section{Hardware}
+
+The hardware provides an interface for controlling the frequency through physical buttons.
+
+The decrement button (shown with a purple wire) reduces the frequency of the led, while the increment button (shown with a yellow wire) increases the frequency.
+
+The rate of change is pre-configured in the application.
